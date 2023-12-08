@@ -21,14 +21,27 @@ public class aitisi {
     private String condition;
 
 
-    public aitisi(int id, String companyname, String katastatiko, String edra, String partner1, String partner2, String condition) {
-        this.id = id;
+    public aitisi( String companyname, String katastatiko, String edra, String partner1, String partner2, String condition, Antiprosopos antiprosopos) {
+
         this.companyname = companyname;
         this.katastatiko = katastatiko;
         this.edra = edra;
         this.partner1 = partner1;
         this.partner2 = partner2;
         this.condition = condition;
+        this.antiprosopos = antiprosopos;
+    }
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name="Anriprosopos_id")
+    private Antiprosopos antiprosopos;
+
+    public Antiprosopos getAntiprosopos() {
+        return antiprosopos;
+    }
+
+    public void setAntiprosopos(Antiprosopos antiprosopos) {
+        this.antiprosopos = antiprosopos;
     }
 
     public void setId(int id) {
@@ -87,4 +100,16 @@ public class aitisi {
         return condition;
     }
 
+    @Override
+    public String toString() {
+        return "aitisi{" +
+                "id=" + id +
+                ", companyname='" + companyname + '\'' +
+                ", katastatiko='" + katastatiko + '\'' +
+                ", edra='" + edra + '\'' +
+                ", partner1='" + partner1 + '\'' +
+                ", partner2='" + partner2 + '\'' +
+                ", condition='" + condition + '\'' +
+                '}';
+    }
 }

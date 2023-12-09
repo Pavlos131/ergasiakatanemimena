@@ -33,7 +33,7 @@ public class aitisi {
     }
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name="Anriprosopos_id")
+    @JoinColumn(name="Antiprosopos_id")
     private Antiprosopos antiprosopos;
 
     public Antiprosopos getAntiprosopos() {
@@ -72,7 +72,7 @@ public class aitisi {
         this.condition = condition;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

@@ -13,6 +13,10 @@ public class Antiprosopos {
     @Column
     private String onomateponimo;
 
+    @Column
+    private String email;
+
+
 
 
     public void setAitiseis(List<aitisi> aitiseis) {

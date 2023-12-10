@@ -8,7 +8,7 @@ import java.util.List;
 public class Antiprosopos {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @Column
     private String onomateponimo;
@@ -17,7 +17,13 @@ public class Antiprosopos {
     private String email;
 
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setAitiseis(List<aitisi> aitiseis) {
         this.aitiseis = aitiseis;

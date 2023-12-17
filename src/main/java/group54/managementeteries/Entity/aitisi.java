@@ -8,6 +8,10 @@ public class aitisi {
 
     @Column
     private String companyname;
+
+    public aitisi() {
+    }
+
     @Column
     private String katastatiko;
     @Column

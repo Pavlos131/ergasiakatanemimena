@@ -4,9 +4,10 @@ import group54.managementeteries.Entity.aitisi;
 import group54.managementeteries.Entity.User;
 import group54.managementeteries.Repository.AitisiRepository;
 import group54.managementeteries.Repository.UserRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AitisiService {
@@ -19,6 +20,7 @@ public class AitisiService {
         User user = userRepository.findByUsername(username).get();
         Aitisi.setUser(user);
         aitisiRepository.save(Aitisi);
+        System.out.println("saved aitisi with id "+ Aitisi.getId());
     }
 
     public aitisi getaitisi(Integer id){
@@ -30,4 +32,9 @@ public class AitisiService {
         aitisiRepository.deleteById(id);
     }
 
+
+    public List<aitisi> getallaitiseis(){
+        return aitisiRepository.findAll();
+
+    }
 }

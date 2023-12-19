@@ -25,7 +25,7 @@ public class aitisi {
     private String condition;
 
 
-    public aitisi( String companyname, String katastatiko, String edra, String partner1, String partner2, String condition, User user) {
+    public aitisi( String companyname, String katastatiko, String edra, String partner1, String partner2, String condition) {
 
         this.companyname = companyname;
         this.katastatiko = katastatiko;
@@ -33,7 +33,7 @@ public class aitisi {
         this.partner1 = partner1;
         this.partner2 = partner2;
         this.condition = condition;
-        this.user = user;
+
     }
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

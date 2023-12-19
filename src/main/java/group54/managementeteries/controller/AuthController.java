@@ -1,4 +1,4 @@
-package controller;
+package group54.managementeteries.controller;
 import group54.managementeteries.config.JwtUtils;
 import group54.managementeteries.Entity.Role;
 import group54.managementeteries.Entity.User;

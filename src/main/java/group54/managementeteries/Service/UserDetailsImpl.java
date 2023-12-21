@@ -5,12 +5,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.GrantedAuthority;
 import group54.managementeteries.Entity.User;
-
+import io.swagger.v3.oas.annotations.Hidden;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
+@Hidden
 public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
 

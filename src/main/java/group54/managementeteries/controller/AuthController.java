@@ -56,6 +56,12 @@ public class AuthController {
             roleRepository.save(new Role("ROLE_USER"));
             return null;
         });
+        roleRepository.findByName("ROLE_MODERATOR").orElseGet(() -> {
+            roleRepository.save(new Role("ROLE_MODERATOR"));
+            return null;
+        });
+
+
     }
 
     @PostMapping("/signin")

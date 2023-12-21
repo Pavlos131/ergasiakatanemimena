@@ -1,6 +1,10 @@
 package group54.managementeteries.Entity;
 import jakarta.persistence.*;
+import java.io.*;
+import java.util.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
+
 public class aitisi {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,22 +26,26 @@ public class aitisi {
     private String partner2;
 
     @Column
-    private String condition;
+    public String condition;
 
+    @Column
+    Integer afm;
 
-    public aitisi( String companyname, String katastatiko, String edra, String partner1, String partner2, String condition) {
+    public aitisi( String companyname, String katastatiko, String edra, String partner1, String partner2) {
 
         this.companyname = companyname;
         this.katastatiko = katastatiko;
         this.edra = edra;
         this.partner1 = partner1;
         this.partner2 = partner2;
-        this.condition = condition;
+
 
     }
 
+
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name="user_id")
+    @JsonIgnore
     private User user;
 
     public User getUser() {
@@ -104,6 +112,13 @@ public class aitisi {
         return condition;
     }
 
+    public Integer getAfm() {
+        return afm;
+    }
 
+    public void setAfm() {
+        int max=100,min=50;
 
+        this.afm = min + (int)(Math.random() * ((max - min) + 1));
+    }
 }

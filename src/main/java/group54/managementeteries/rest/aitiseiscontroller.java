@@ -1,4 +1,5 @@
 package group54.managementeteries.rest;
+import group54.managementeteries.Entity.User;
 import group54.managementeteries.Service.AitisiService;
 import group54.managementeteries.Service.UserDetailsImpl;
 import group54.managementeteries.Service.UserDetailsServiceImpl;
@@ -11,15 +12,19 @@ import group54.managementeteries.Entity.aitisi;
 import group54.managementeteries.Service.UserDetailsImpl;
 import group54.managementeteries.Service.UserDetailsServiceImpl;
 import java.util.List;
+import java.util.Optional;
+
+import group54.managementeteries.Repository.UserRepository;
 import group54.managementeteries.payload.AitisiRequest;
 
 @RestController
 @RequestMapping("/api/requests/")
 public class aitiseiscontroller {
     @Autowired
+    private UserRepository userRepository;
+    @Autowired
     private AitisiService aitisiService;
-// authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//       String username=auth.getName();
+
     private UserDetailsImpl userDetails;
    @GetMapping("")
     public List<aitisi> getAitiseis()
@@ -46,7 +51,6 @@ public class aitiseiscontroller {
 
 @GetMapping("/approve/{id}")
     public String aproveAitisi(@PathVariable("id") Integer id){
-       System.out.println(id);
        aitisi Aitisi = aitisiService.getaitisi(id);
 
        Aitisi.setCondition("Approved");
@@ -66,5 +70,15 @@ public class aitiseiscontroller {
         return "Disaproved aitisi";
     }
 
+    @GetMapping("userrequests") //epistrefei tis aitiseis tou sindedemenou xristi
+    public List<aitisi>   getuseraitiseis(){
+        Authentication auth = SecurityContextHolder. getContext(). getAuthentication();
+        String username =auth.getName();
+        Optional<User> temp = userRepository.findByUsername(username);
+         User  user = temp.get();
+         return user.getAitiseis();
+
+
+    }
 
 }

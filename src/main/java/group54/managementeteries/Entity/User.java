@@ -89,8 +89,9 @@ public class User {
     }
 
 
-
-
+    public List<aitisi> getAitiseis() {
+        return aitiseis;
+    }
 
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     private List<aitisi> aitiseis;

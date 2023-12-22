@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.Hidden;
 import java.util.Optional;
 @Hidden
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findByUsername(String username);
     Boolean existsByUsername(String username);

@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.*;
 import  group54.managementeteries.Repository.UserRepository;
 import group54.managementeteries.Repository.RoleRepository;
 import java.util.List;
-
+import group54.managementeteries.Repository.RoleRepository;
 @RestController
+
 @RequestMapping("/api/users/")
 public class usercontoller {
     @Autowired
@@ -34,7 +35,9 @@ public class usercontoller {
     {
         User user;
        user= userRepository.findById(id).get();
-       user.getRoles().add(roleRepository.findById(3).get());
+       user.getRoles().add(roleRepository.findByName("ROLE_MODERATOR").get());
+       userRepository.save(user);
+
        return "user made mod";
 
 

@@ -5,6 +5,7 @@ import group54.managementeteries.Service.UserDetailsImpl;
 import group54.managementeteries.Service.UserDetailsServiceImpl;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class aitiseiscontroller {
     private AitisiService aitisiService;
 
     private UserDetailsImpl userDetails;
+    @Secured({"ROLE_MODERATOR", "ROLE_ADMIN"})
    @GetMapping("")
     public List<aitisi> getAitiseis()
    {   Authentication auth = SecurityContextHolder. getContext(). getAuthentication();
@@ -42,13 +44,14 @@ public class aitiseiscontroller {
       aitisiService.saveaitisi(Aitisi,username);
    }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("{id}")
     public String deleteAitisi(@PathVariable("id") Integer id){
     aitisiService.deleteaitisi(id);
      return "deleted aitisi";
 
     }
-
+    @Secured("ROLE_MODERATOR")
 @GetMapping("/approve/{id}")
     public String aproveAitisi(@PathVariable("id") Integer id){
        aitisi Aitisi = aitisiService.getaitisi(id);
@@ -59,7 +62,7 @@ public class aitiseiscontroller {
     return "aproved aitisi";
 }
 
-
+@Secured("ROLE_MODERATOR")
     @GetMapping("/disapprove/{id}")
     public String disaproveAitisi(@PathVariable("id") Integer id){
         aitisi Aitisi = aitisiService.getaitisi(id);

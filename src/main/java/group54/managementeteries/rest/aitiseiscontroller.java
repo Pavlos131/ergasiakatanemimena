@@ -51,7 +51,7 @@ public class aitiseiscontroller {
      return "deleted aitisi";
 
     }
-    @Secured("ROLE_MODERATOR")
+    @Secured({"ROLE_MODERATOR", "ROLE_ADMIN"})
 @GetMapping("/approve/{id}")
     public String aproveAitisi(@PathVariable("id") Integer id){
        aitisi Aitisi = aitisiService.getaitisi(id);
@@ -62,7 +62,7 @@ public class aitiseiscontroller {
     return "aproved aitisi";
 }
 
-@Secured("ROLE_MODERATOR")
+@Secured({"ROLE_MODERATOR", "ROLE_ADMIN"})
     @GetMapping("/disapprove/{id}")
     public String disaproveAitisi(@PathVariable("id") Integer id){
         aitisi Aitisi = aitisiService.getaitisi(id);

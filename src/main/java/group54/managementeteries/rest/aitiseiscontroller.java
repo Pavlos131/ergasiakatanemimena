@@ -45,7 +45,7 @@ public class aitiseiscontroller {
    }
 
     @Secured("ROLE_ADMIN")
-    @DeleteMapping("{id}")
+    @GetMapping("/delete/{id}")
     public String deleteAitisi(@PathVariable("id") Integer id){
     aitisiService.deleteaitisi(id);
      return "deleted aitisi";
@@ -67,7 +67,7 @@ public class aitiseiscontroller {
     public String disaproveAitisi(@PathVariable("id") Integer id){
         aitisi Aitisi = aitisiService.getaitisi(id);
 
-        Aitisi.setCondition("Dispproved");
+        Aitisi.setCondition("Disapproved");
 
         aitisiService.saveaitisi(Aitisi);
         return "Disaproved aitisi";

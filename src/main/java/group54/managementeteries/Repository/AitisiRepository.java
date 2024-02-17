@@ -7,7 +7,7 @@ import group54.managementeteries.Entity.aitisi;
 import io.swagger.v3.oas.annotations.Hidden;
 
 import java.util.Optional;
-
+@Hidden
 
 @RepositoryRestResource(path= "aitisi")
 
